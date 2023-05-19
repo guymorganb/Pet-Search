@@ -15,21 +15,10 @@
 <body>
     <!-- This is an HTML Comment!  -->
 <main>
-    <div id="search">
-        <form action="/search" method="GET">
-            <input type="text" id="searchText" name="searchText" placeholder="Search text...">
-            <button type="submit">Search</button>
-            
-            <input type="text" id="zipcode" name="zipcode" placeholder="Enter zip code...">
-            <button type="submit">Search</button>
-            <br>
-            <input type="checkbox" id="category" name="category" value="category">
-            <label id="img" for="category">
-            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" height="150px" alt="Category Image">
-            Dogs
-            </label>
-            
-        </form>
+    <div class="flex-row align-center justify-center min-1000vh bg-primary">
+        <div class="col-12 col-md-9 flex-column align-center bg-light p-5"></div>
+        <h1 class="text-primary"> Search for a pet</h1>
+        <form id="search-input"></form>
     </div>
 </main>
 
