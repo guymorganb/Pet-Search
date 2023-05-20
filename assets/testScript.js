@@ -2,27 +2,65 @@
 
 const clientId = 'Eohh2DT9tfvVJHhqcILMutCp65djOTin3jgP9yOznFSTNR5Nr8';
 const clientSecret = '77mOBQIaScP5uUxJw66mkNdWTBJ5wwQvrz5QXgdK';
-const tokenEndpoint = 'https://api.petfinder.com/v2/oauth2/token';
 
 
 
-async function getToken(){  
-    let resonse = await fetch(tokenEndpoint,{
+
+async function getToken(){ 
+    const tokenEndpoint = 'https://api.petfinder.com/v2/oauth2/token'; 
+    try{
+    let response = await fetch(tokenEndpoint,{
+      headers: {
+        Authorization: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
+      }
+    })
+    if(response.ok){
+        let data = await response.json();
+        return data;
+    }else{
+        throw new Error('Network respone not OK');
+    }
+    }catch(error){
+    console.log('Error:');
+    error404();
+    console.log('Error:', error);
+    console.log('Error:after');
+}
+
+
+function petfinderApi(data) {
+
+    fetch('https://api.petfinder.com/v2/animals?type=dog&page=2',{
+      method: 'GET',
       headers:{
-        Authorization: 
+        Authorization: `Bearer ${data}`, 
       }
-})
-    .then(function (response) {
-      if (response.status == 200) {
-        console.log(response.status)
-      }
-      return response.json();
-  }).then(function(data){
-    console.log(data);
-  })
+    })
+      .then(function (response) {
+        if (response.status == 200) {
+          console.log(response.status)
+        }
+        return response.json();
+    }).then(function(data){
+      console.log(data);
+    })
+  
+  }
+
+function getPetData(){getToken().then(petfinderApi(data))}
+
 
 }
 
+
+// .then(function (response) {
+//     if (response.status == 200) {
+//       console.log(response.status)
+//     }
+//     return response.json();
+// }).then(function(data){
+//   console.log(data);
+// })
 
 // curl -d "grant_type=client_credentials&client_id={CLIENT-ID}&client_secret={CLIENT-SECRET}" https://api.petfinder.com/v2/oauth2/token
 
@@ -46,25 +84,7 @@ async function getToken(){
 
 // example let requestUrl = 'Authorization: GET https://api.petfinder.com/v2/animals?type=dog&page=2'
 
-// function getApi() {
 
-//   fetch('https://api.petfinder.com/v2/animals?type=dog&page=2',{
-//     headers:{
-//       Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJFb2hoMkRUOXRmdlZKSGhxY0lMTXV0Q3A2NWRqT1RpbjNqZ1A5eU96bkZTVE5SNU5yOCIsImp0aSI6IjIwNWVjMzk5ZmQ3NzNjMzllNjU4MjQ1NWJjMzE2MzQ1MDI1ZWQzYWYyM2MzZThhYWE4MzZmNWM4NTIyMzUxZGQzN2MwOWM4MjAxZWY5M2I4IiwiaWF0IjoxNjg0MzgxMDk3LCJuYmYiOjE2ODQzODEwOTcsImV4cCI6MTY4NDM4NDY5Nywic3ViIjoiIiwic2NvcGVzIjpbXX0.WxTxSoDWe0oGrIUA4zvrNWARjFuKr3XdR-IHkRSp6jLVRoZ9ClM2VzrN9O7myiO1jzLXKrMmhMw45FJUNuIBIxegtloOWOPAROVmUum9yj7XwzuwhtjIhkMbDX16VDDStmqVPOg4tpc3VnFh8pwWLERrvjepwloOeKqLYHnM9gPvpEV1ai0stGrJL30jGMJiCgfyGYSBD7SGBr5S8ZMmgEZHX3Aop3QRRIaaSfGIspvUZIhCcMDH2Yo9Lgab_RhanzrlmLGXMuFN5aT779mz_noFkdA_5cH9BMh36Nowr4bDde0HSd2-GwnoAyhfZlnv9jY0WBSHf17llLnU4xMChw'
-//     }
-//   })
-//     .then(function (response) {
-//       if (response.status == 200) {
-//         console.log(response.status)
-//       }
-//       return response.json();
-//   }).then(function(data){
-//     console.log(data);
-//   })
-
-// }
-
-// getApi();
 ///////////////////////////////////get final the petfinder api/////////////////////////////////////////
 
 
