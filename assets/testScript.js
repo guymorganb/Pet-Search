@@ -10,12 +10,13 @@ async function getToken(){
     const tokenEndpoint = 'https://api.petfinder.com/v2/oauth2/token'; 
     try{
     let response = await fetch(tokenEndpoint,{
-      headers: {
+    headers: {
         Authorization: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
-      }
+        }
     })
     if(response.ok){
         let data = await response.json();
+        console.log('Everything ok')
         return data;
     }else{
         throw new Error('Network respone not OK');
@@ -27,28 +28,31 @@ async function getToken(){
     console.log('Error:after');
 }
 
-
-function petfinderApi(data) {
-
-    fetch('https://api.petfinder.com/v2/animals?type=dog&page=2',{
+}
+async function petfinderApi(data, location, type) {
+    const url = 'https://api.petfinder.com/v2/animals?type=dog&page=2'
+    try{
+    let response = await fetch(url,{
       method: 'GET',
       headers:{
         Authorization: `Bearer ${data}`, 
-      }
-    })
-      .then(function (response) {
-        if (response.status == 200) {
-          console.log(response.status)
         }
-        return response.json();
-    }).then(function(data){
-      console.log(data);
-    })
-  
-  }
+        })
+    if(response.ok) {
+        let adoptionData = await response.json();
+        console.log(adoptionData)
+        return adoptionData
+    }else{
+        throw new Error('network not OK')
+    }
+    }catch(error){
+    console.log('Error: adoption data ', error)
+    }
+}
 
-function getPetData(){getToken().then(petfinderApi(data))}
-
+function getAdoptionData(location , type){getToken().then(petfinderApi(data, location, type){
+   // some cod to handle parsing the data  
+})
 
 }
 
