@@ -66,9 +66,11 @@ async function getToken() {
         return
     }
 }
+// `https://api.petfinder.com/v2/animals?type=dog&page=2`
+// `https://api.petfinder.com/v2/types/dog/breeds` <--works
 // async function to get pet data (this should be integrated with getToken() because they are dependencies) but not reliant upon other functions
 async function getAnimals(type, location, breed) {      // this function will need to be modified later to accomodate search results
-    const url = `https://api.petfinder.com/v2/animals?type=dog&page=2`
+    const url = `https://api.petfinder.com/v2/types/dog/breeds`
     try{
     // since token must be check against time, we need to call getToken() here (we are using persistant data for the key)
     await getToken();
@@ -89,9 +91,10 @@ async function getAnimals(type, location, breed) {      // this function will ne
     }
 }
 async function getData(type, location, breed){
-// do not want getToken() to be here or it will mess up the flexibility of the code *CLEAN CODE* is the goal
+// do not want getToken() to be here or it will mess up the flexibility of the code
     try{
         let adoptionData = await getAnimals(type, location, breed);
+        console.log(adoptionData)
         return adoptionData
     }catch(error){
         console.log('Error', error)
@@ -103,7 +106,9 @@ function getAdoptionData(type, location, breed){
         console.log(adoptionData)
 })
 }
-getAdoptionData()
+//getData()
+
+//getAdoptionData()
 
 /////////////////////////////gets wikapedia api for dog breeds////////////////////////////////////////
 
@@ -139,5 +144,5 @@ function getBreedInfo(breed){
         console.log(data)
 })} 
 
-getBreedInfo('bichon')
+//getBreedInfo('bichon')
 /////////////////////////////gets wikapedia api for dog breeds////////////////////////////////////////
