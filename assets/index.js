@@ -11,28 +11,36 @@ let initVal = 'dog'
 let navEl = $('#navbarSupportedContent')
 // Modal alert box taken from jQuery UI examples
 function modalAlert() {
-   
     let divEl = $(`
-    <div id="dialog" title=Basic dialog>
+    <div id="dialog" title="Input error" class="ui-widget rounded-1">
     <p>This dialoge will show you some information, then explode.</p>
     </div>`)
     divEl.insertAfter(navEl)
-    
     $("#dialog").dialog({
-      autoOpen: false,
-      show: {
+        modal: true,
+        height: 200,
+        draggable: true,
+        autoOpen: false,
+    show: {
         effect: "blind",
         duration: 500
       },
-      hide: {
+    hide: {
         effect: "explode",
         duration: 750
-      }
+      },
+    buttons: [{
+        text: "Ok",
+        click: function() {
+        $( this ).dialog( "close" );
+        },
+          // Uncommenting the following line would hide the text,
+          // resulting in the label being used as a tooltip
+          // showText: true,
+        }],
     });
     $( "#dialog" ).dialog( "open" );
-} ;
-
-
+};
 // sets items in local storage
 function setStorage(key, value){
     localStorage.setItem(key, value)
@@ -187,7 +195,7 @@ function navBarTextSearch(){
         })
     })
 }
-navBarTextSearch()
+
 
 
 function init(type){
@@ -197,6 +205,7 @@ function init(type){
         console.log(data.adoptionData, data.type)
         })
     navBarTypeSearch()
+    navBarTextSearch()
 }
 
-// document.addEventListener('DOMContentLoaded', init(initVal) )
+ // document.addEventListener('DOMContentLoaded', init(initVal))
