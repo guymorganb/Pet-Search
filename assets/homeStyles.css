@@ -1,3 +1,180 @@
 /*home page stylesheet*/
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .petCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .petCard-Link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin-right: 50px; /* Add spacing between the pet icons */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #8333c0; 
+    font-size: 3.5rem;
+    text-decoration: none; 
+    transition: transform 0.9s ease-in-out; 
+  }
+
+  .petCard-Link:hover {
+    transform: scale(1.1); /* Apply a scale effect on hover */
+    color: #FFA000; 
+  }
+
+  .petCard-Link i {
+    transition: color 0.3s ease; /* Add a transition effect to the icon color */
+  }
+
+  .petCard-Link:hover i {
+    color: #FFA000; /* Change the icon color on hover */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .petCard-Name {
+    margin-top: 10px; 
+    font-size: 1rem; 
+    text-align: left; 
+  }
   
+  /* Adjust the image as desired */
+  #hero {
+    background-image: url(secondaryAssests/image/img-1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px; 
+    width: 100%;
+    position: relative;
+  }
+  .personality-test-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 70px;
+    background-color: #FFC107;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .personality-test-btn:hover {
+    background-color: #FFA000;
+    transform: scale(1.1); /* Apply scale effect on hover */
+  }
+  
+  .personality-test-btn i {
+    margin-right: 5px;
+  }
+
+  
+  .footer-wrapper {
+    background-color: #d892dc;
+    padding: 10px;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    background-color: transparent;
+    color: rgb(48, 48, 174);
+    text-decoration: none;
+    font-size: 16px; /* Adjust the font size as desired */
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  .footer-links i:hover {
+    transform: scale(1.5);
+    color: white;
+  }
+  .footer-links a:hover {
+    color: white;
+  }
+  
+  .footer-links i {
+    font-size: 25px;
+    margin-right: 5px;
+    color: black;
+  }
+  
+  
+  .footer-disclaimer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .footer-disclaimer p {
+    margin: 0 5px; 
+    font-size: 12px; 
+    color: #777;
+  }
+  
+  .footer-disclaimer a {
+    text-decoration: none;
+    margin-right: 10px; 
+  }
+  
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; 
+  }
+  
+  .newsletter-form input[type="email"] {
+    padding: 8px; 
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 8px; 
+    width: 180px;
+    font-size: 14px; 
+  }
+  
+  .newsletter-form input[type="submit"] {
+    padding: 8px 16px; 
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px; 
+    cursor: pointer;
+  }
+  
+  .newsletter-form input[type="submit"]:hover {
+    background-color: #555;
+  }
+  
+
