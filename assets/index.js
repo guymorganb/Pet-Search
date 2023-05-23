@@ -5,8 +5,8 @@
 // get vars from index
 let searchBarDropMenu = $('#search-type');
 let zipCode = $('#zipcode'); 
-let searchByType = $("#navSearch")
-let navSearchBtn =$("#navSearchBtn")
+let searchByType = $("#navSearch")  // search by Dog/cat/horse/bird/rabbit from dropdown
+let navSearchBtn =$("#navSearchBtn") // search by type in navbar
 let initVal = 'dog'
 let navEl = $('#navbarSupportedContent')
 // Modal alert box taken from jQuery UI examples
@@ -155,12 +155,32 @@ function updateDropMenu(adoptionData, type){
 // this was a different way i had to figure out, cause accessing the array
 // directly with a for loop didnt work for some reason
     adoptionData.breeds.forEach((breed) => {
-    let nextOption = $(`<option value="${breed.name}">${breed.name}</option>`);;
+    let nextOption = $(`<option class="breedOption" value="${breed.name}">${breed.name}</option>`);
     nextOption.insertAfter(firstOption);
     firstOption = nextOption;
-  });
-
+});
 }
+
+function returnTarget(){
+    searchBarDropMenu.on('change', function(){
+        console.log(searchBarDropMenu.val())
+    })
+}
+
+
+function getZipCode(){
+    $("#zip").on('click', function(event){
+        event.preventDefault()
+        if(isNaN(zipCode.val()) || zipCode.val().length != 5)
+            modalAlert(event)
+        else{
+            console.log(zipCode.val())
+        }
+    })
+    
+}
+
+
 // added event handler to class='dropdown-item' and chain function calls
 // getDataFromNavDropDown function creates and returns a new promise 
 // that resolves with the extracted type. In the click event handler, 
@@ -180,6 +200,7 @@ function navBarTypeSearch(){
         }
     )
 }
+
 function navBarTextSearch(){
     navSearchBtn.click(function(event){
         return new Promise(function(resolve){
@@ -195,8 +216,9 @@ function navBarTextSearch(){
         })
     })
 }
-
-
+function handleSearchResults(data){
+    console.log("heres your data:" + data)
+}
 
 function init(type){
     getData(type)
@@ -204,8 +226,11 @@ function init(type){
         updateDropMenu(data.adoptionData, data.type)
         console.log(data.adoptionData, data.type)
         })
-    navBarTypeSearch()
-    navBarTextSearch()
+
+    navBarTypeSearch()  // this is a promise and populates the dropdown next to zipCode
+    navBarTextSearch().then(handleSearchResults(searchVal)) // this is a promise
+    getZipCode()        // this is a regular function
+    returnTarget()      // this is a regular function
 }
 
- // document.addEventListener('DOMContentLoaded', init(initVal))
+ //document.addEventListener('DOMContentLoaded', init(initVal))
