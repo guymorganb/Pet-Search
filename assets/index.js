@@ -147,6 +147,7 @@ function getDataFromNavDropDown(event){
         }
     })
 }
+
 // updates the maind drop menu with avaliable anaimals
 function updateDropMenu(adoptionData, type){
     searchBarDropMenu.empty()
@@ -202,8 +203,8 @@ function navBarTypeSearch(){
 }
 
 function navBarTextSearch(){
-    navSearchBtn.click(function(event){
-        return new Promise(function(resolve){
+    return new Promise(function(resolve){
+        navSearchBtn.click(function(event){
             event.preventDefault()
             let searchVal = searchByType.val().toLowerCase().trim()
             if(searchVal == 'cat' || searchVal == 'dog' || searchVal =='horse' || searchVal == 'bird' || searchVal == 'rabbit'){
@@ -216,6 +217,7 @@ function navBarTextSearch(){
         })
     })
 }
+
 function handleSearchResults(data){
     console.log("heres your data:" + data)
 }
@@ -227,10 +229,10 @@ function init(type){
         console.log(data.adoptionData, data.type)
         })
 
-    navBarTypeSearch()  // this is a promise and populates the dropdown next to zipCode
-    navBarTextSearch().then(handleSearchResults(searchVal)) // this is a promise
+    navBarTypeSearch()  
+    navBarTextSearch().then(handleSearchResults) 
     getZipCode()        // this is a regular function
     returnTarget()      // this is a regular function
 }
 
- //document.addEventListener('DOMContentLoaded', init(initVal))
+ document.addEventListener('DOMContentLoaded', init(initVal))
