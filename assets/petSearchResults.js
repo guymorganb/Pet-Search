@@ -1,23 +1,29 @@
-/**
- * JavaScript Pet-Seacrh
- * index.html JacaScript
- */
-// get vars from index
-let searchBarDropMenu = $('#search-type');
-let zipCode = $('#zipcode'); 
-let searchByType = $("#navSearch")  // search by Dog/cat/horse/bird/rabbit from dropdown
-let navSearchBtn =$("#navSearchBtn") // search by type in navbar
-let initVal = 'Dog'
-let navEl = $('#navbarSupportedContent')
-let zip = 0
-let breed = null
-// Modal alert box taken from jQuery UI examples
+
+// GET https://api.petfinder.com/v2/types/{type}/breeds Returns possible breed values for a given animal type
+
+//'./Pet-Search/assets/petSearchResults.html?type=${}'
+//GET https://api.petfinder.com/v2/organizations
+
+// base call single animal type GET https://api.petfinder.com/v2/types/{type}
+// search by distance and type and sort by distance
+// https://api.petfinder.com/v2/animals?type=dog&location=78582&distance=75&sort=-distance
+let zipCode = $("#navbarSupportedContent")
+let appendModal = $('.fa-search')
+const animalDataFromIndex = {
+    type : "",
+    breed : ""
+}
+const userData = {
+    zip : "",
+    distance : "",
+    fromTypeButton : "",
+}
 function modalAlert() {
     let divEl = $(`
     <div id="dialog" title="Input error" class="ui-widget rounded-1">
     <p>This dialoge will show you some information, then explode.</p>
     </div>`)
-    divEl.insertAfter(navEl)
+    divEl.insertAfter(appendModal)
     $("#dialog").dialog({
         modal: true,
         height: 200,
@@ -43,6 +49,8 @@ function modalAlert() {
     });
     $( "#dialog" ).dialog( "open" );
 };
+
+/////////////////////code resused from index.js////////////////////////
 // sets items in local storage
 function setStorage(key, value){
     localStorage.setItem(key, value)
@@ -137,115 +145,78 @@ async function getData(type){
             console.log('Error', error)
         }
 }
-// this code turns this function into one that returns uses the promise object 
-// this is done so it can be chained
-function getDataFromNavDropDown(event){
-    return new Promise(function(resolve){
+// get data from search bar
+function parseSearchBar(){
+    // gets url data
+    let windowData = document.location.href.split('?')[1]
+    // splits for testing
+    windowData = windowData.split('=')
+    if(windowData.length == 2){
+        // joins for parsing
+        windowData = windowData.join('=')
+        // sets animal object data
+        animalDataFromIndex.type = windowData
+    }else if(windowData.length == 4){
+        // joins for parsing
+        windowData = windowData.join('=')
+        // matches all occurrences of "%20" in the string. The g flag indicates a global search, it will replace all instances of "%20" instead of just the first occurrence.
+        windowData = windowData.replace(/%20/g, " ")
+        windowData = windowData.replace(/breed=/g, "")
+        windowData = windowData.split('&')
+        // sets animal object data
+        animalDataFromIndex.type = windowData[0]
+        animalDataFromIndex.breed = windowData[1]
+        // sets user object data
+        userData.zip = windowData[windowData.length-1]
+    }
+}
+function searchByDistance(){
+    $('.distance').click(function(event){
+        userData.distance = event.target.innerText
+        if(/miles/.test(userData.distance)){
+        userData.distance = userData.distance.replace(/miles/g, "").trim();
+        }
+        if (userData.distance == 'Any'){
+            userData.distance = '500'
+        }
+        console.log(userData.distance)
+    }) 
+}
+function searchByType(){
+    $('.types').click(function(event){
+        //pass a callback function to then().
         let type = event.target.innerText
         if (type){
-            type = type.slice(0, type.length-1)
-            initVal = type
-            resolve(type)
+            // set object data from type dropdown button
+            userData.fromTypeButton = type.slice(0, type.length-1)
         }
-    })
-}
-
-// updates the maind drop menu with avaliable anaimals
-function updateDropMenu(adoptionData, type){
-    searchBarDropMenu.empty()
-    let firstOption = $(`<option value="" disabled selected>Available ${type} breeds</option>`);
-    searchBarDropMenu.append(firstOption);
-// this was a different way i had to figure out, cause accessing the array
-// directly with a for loop didnt work for some reason
-    adoptionData.breeds.forEach((breed) => {
-    let nextOption = $(`<option class="breedOption" value="${breed.name}">${breed.name}</option>`);
-    nextOption.insertAfter(firstOption);
-    firstOption = nextOption;
-});
-}
-
-function returnAvaliableBreeds(){
-        $('#search-type').on('change', function(){
-            //resolve(searchBarDropMenu.val())
-            breed = searchBarDropMenu.val()
-            console.log(breed)
-            handleSearchResults()
-        })
-}
-
-function getZipCode(){
-        $("#zip").on('click', function(event){
-            event.preventDefault()
-            if(isNaN(zipCode.val()) || zipCode.val().length != 5 || searchBarDropMenu.val() == null){
-                modalAlert()
-            }else{
-                zip = zipCode.val()
-                handleSearchResults()
-            }
-        }) 
-}
-// added event handler to class='dropdown-item' and chain function calls
-// getDataFromNavDropDown function creates and returns a new promise 
-// that resolves with the extracted type. In the click event handler, 
-// the resolved type is passed to the getData function using the then() method. 
-// Finally, the adoptionData is logged to the console.
-function navBarTypeSearch(){
-    $('.dropdown-item').click(function(event){
-        getDataFromNavDropDown(event)
-        //pass a callback function to then().
-        .then(function(type){
-            return getData(type)
-        })
-        .then(function(data){
-            updateDropMenu(data.adoptionData, data.type)
-            console.log(data.adoptionData, data.type)
-        })
         }
     )
 }
-function navBarTextSearch(){
-    return new Promise(function(resolve){
-        navSearchBtn.click(function(event){
+
+function getZipCode(){
+    $("#zip").on('click', function(event){
         event.preventDefault()
-        let searchVal = searchByType.val().toLowerCase().trim() // fix it if user input is plural
-        if(searchVal[searchVal.length-1] == 's'){
-            searchVal = searchVal.slice(0,-1)
-        }
-        if(searchVal == 'cat' || searchVal == 'dog' || searchVal =='horse' || searchVal == 'bird' || searchVal == 'rabbit'){
-                resolve(searchVal);
+        if(isNaN(zipCode.val()) || zipCode.val().length != 5 || searchBarDropMenu.val() == null){
+            modalAlert()
         }else{
-                modalAlert(event)
-            }
-        })
-    })
+            userData.zip = zipCode.val()
+            handleSearchResults()
+            console.log(userData.zip)
+        }
+    }) 
 }
-function changePage(url){
-    window.location.href = url
-}
-function handleSearchResults(data){
+function generateContent(){
 
-    if(data === 'cat' || data === 'dog' || data === 'horse' || data === 'bird' || data === 'rabbit' ){
-        let go1 = `./petSearchResults.html?type=${data}` // has to be in this format or it wont work
-        changePage(go1)
-    }
-    if((initVal === 'Cat' || initVal === 'Dog' || initVal === 'Horse' || initVal === 'Bird' || initVal === 'Rabbit') && /^[0-9]{5}$/.test(zip)){
-        let go2 = `./petSearchResults.html?type=${initVal}&breed=${breed}&location=${zip}`
-        changePage(go2)
-        console.log(initVal)
-        console.log(breed)
-        console.log(zip)
-    }
 }
-function init(type){
-    getData(type)
-    .then(function(data){
-        updateDropMenu(data.adoptionData, data.type)
-        console.log(data.adoptionData, data.type)
-        })
-    navBarTypeSearch()  
-    navBarTextSearch().then(handleSearchResults) // returns cats/dogs/horses/birds/rabbits
-    getZipCode()  
-    returnAvaliableBreeds()    
+function init(){
+
+    parseSearchBar()
+    searchByDistance()
+    searchByType()
+    getZipCode()
+
+    
 }
 
- document.addEventListener('DOMContentLoaded', init(initVal))
+document.addEventListener('DOMContentLoaded', init())

@@ -70,7 +70,7 @@ async function getToken() {
 // `https://api.petfinder.com/v2/types/dog/breeds` <--works
 // async function to get pet data (this should be integrated with getToken() because they are dependencies) but not reliant upon other functions
 async function getAnimals(type, location, breed) {      // this function will need to be modified later to accomodate search results
-    const url = `https://api.petfinder.com/v2/types/dog/breeds`
+    const url = `https://api.petfinder.com/v2/animals`
     try{
     // since token must be check against time, we need to call getToken() here (we are using persistant data for the key)
     await getToken();
@@ -81,7 +81,7 @@ async function getAnimals(type, location, breed) {      // this function will ne
     })
     if(response.ok) {
         let data = await response.json();
-        //console.log(data)
+        console.log(data)
         return data
     }else{
         throw new Error('Network not OK in getAnimals')
@@ -106,7 +106,7 @@ function getAdoptionData(type, location, breed){
         console.log(adoptionData)
 })
 }
-//getData()
+getData()
 
 //getAdoptionData()
 
