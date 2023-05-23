@@ -10,29 +10,57 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
     position: absolute;
-    top: 57%;
+    top: 5%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -125%);
   }
-
+  
   .petCard-Link {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Change flex-direction to row */
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
-    margin-right: 50px; /* Add spacing between the pet icons */
+    width: 100%; /* Adjust the width using percentage */
+    height: auto; /* Adjust the height automatically based on the image aspect ratio */
+    margin-right: 2%; /* Adjust the margin using percentage */
     border: none;
     background-color: transparent;
     cursor: pointer;
-    color: #8333c0; 
-    font-size: 3.5rem;
-    text-decoration: none; 
-    transition: transform 0.9s ease-in-out; 
+    color: #8333c0;
+    font-size: 5vw; /* Adjust the font-size using viewport width (vw) */
+    text-decoration: none;
+    transition: transform 0.9s ease-in-out;
   }
+  
+.video-container iframe {
+  border: none; /* Remove iframe border */
+}
+
+.video-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-container iframe {
+  position: absolute;
+  width: 30vw; /* Adjust the width using viewport width (vw) */
+  height: 10vw; /* Adjust the height using viewport width (vw) */
+  border-radius: 20px; /* Remove iframe border */
+}
+
+.left-video {
+  order: 1; /* Display on the left */
+  left: 0;
+  /* Adjust the top value using viewport height (vh) */
+}
+
+.right-video {
+  order: 2; /* Display on the right */
+  right: 0;
+ /* Adjust the top value using viewport height (vh) */
+}
+
 
   .petCard-Link:hover {
     transform: scale(1.1); /* Apply a scale effect on hover */
@@ -92,14 +120,22 @@
   
   .footer-wrapper {
     background-color: #d892dc;
-    padding: 10px;
+      padding: 5px; 
   }
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
   
   .footer-links {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-right: 40px;
   }
   
   .footer-links a {
@@ -147,23 +183,16 @@
     margin-right: 10px; 
   }
   
-  .newsletter-form {
+  .newsletter-form{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px; 
   }
   
-  .newsletter-form input[type="email"] {
-    padding: 8px; 
-    border: none;
-    border-radius: 4px;
-    margin-bottom: 8px; 
-    width: 180px;
-    font-size: 14px; 
-  }
+
   
-  .newsletter-form input[type="submit"] {
+  .newsletter-form input{
     padding: 8px 16px; 
     background-color: #333;
     color: white;
@@ -173,8 +202,37 @@
     cursor: pointer;
   }
   
+  
   .newsletter-form input[type="submit"]:hover {
     background-color: #555;
+    color: white;
+  }
+  .navbar-nav .dropdown-menu {
+    text-align: center;
   }
   
-
+  .navbar-nav .dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center; /* Center align the text */
+    text-decoration: none;
+  }
+  
+  .navbar-nav .dropdown-menu .chewy-link {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align the content */
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+  }
+  
+  .navbar-nav .dropdown-menu .chewy-link i {
+    margin-right: 0.5rem;
+    margin-bottom: 5px;
+  }
+  
