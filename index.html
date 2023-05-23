@@ -29,8 +29,18 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="https://www.petfinder.com/">External Links</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#Match">Match by personality</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Resource
+                    </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="https://www.chewy.com/" target="_blank" rel="noopener noreferrer" class="chewy-link">
+                          <i class="fas fa-shopping-cart"></i>Chewy.com</a>
+                        <a href="https://www.chompsdogtraining.com/service/dog-obedience-training?gclid=CjwKCAjwgqejBhBAEiwAuWHioI_GjuyBIGT345G35KLz-RFpGyZ1F5qXxgiwT7kUWGC2qdTOvJ9fMhoCfX8QAvD_BwE">Pet Training</a>
+                        <a href="https://www.dailypaws.com/pet-news-entertainment/adoption-stories">New Center</a>
+                        <a href="https://petsmartcharities.org/pro/faqs">FAQs</a>
+                      </ul>
+                    </li>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,6 +59,7 @@
                   <li class="nav-item">
                     <a class="nav-link text-success tex">Pause for Pets</a>
                   </li>
+                  
                 </ul>
                 <form class="d-flex">
                   <input class="form-control me-2" type="search" id="navSearch" placeholder="Animals by Type" aria-label="Search">
@@ -61,45 +72,48 @@
     
 </nav>
     
-    <main class="align-items-center justify-content-center min-100vh " >
-        <div class="d-flex col-12  flex-column align-items-center bg-primary-subtle py-5" >
-            <div id="hero" class="col-sm-12 col-md-12 col-lg-12 col-xl-9 flex-column align-center bg-light p-5  rounded-4"style="background-image: url('https://static.foxbusiness.com/foxbusiness.com/content/uploads/2022/04/iStock-1324099927.jpg'); background-size: cover; background-position: center;">
-                <form id="search-form" class="">
-                    <div class="form-group p-5">
-                        <div class="input-group d-flex align-items-center justify-content-center">
-                            <select id="search-type" class="form-input w-45 rounded-1 m-2">
-                                
-                            </select>
-                            <input class="w-45 me-2 rounded-1" type="text" id="zipcode" name="zipcode" placeholder="ZIP code" required>
-                            <div class="input-group-append">
-                                <button type="submit" id="zip" class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <h1 class="d-flex text-success align-items-center justify-content-center p-3">Find a new friend</h1>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </main>
-<div class="d-flex col-20 flex-column align-items-center bg-primary-subtle py-5">
-    <div id="hero" class="col-sm-12 col-md-18 col-lg-12 col-xl-9 flex-column align-center bg-light p-9 rounded-4">
-        <div class="form-group p-5">
+  <main class="align-items-center justify-content-center min-100vh " >
+    <div class="d-flex col-12  flex-column align-items-center bg-primary-subtle py-5" >
+      <div id="hero" class="col-sm-12 col-md-12 col-lg-12 col-xl-9 flex-column align-center bg-light p-5  rounded-4"style="background-image: url('https://static.foxbusiness.com/foxbusiness.com/content/uploads/2022/04/iStock-1324099927.jpg'); background-size: cover; background-position: center;">
+        <form id="search-form" class="">
+          <div class="form-group p-5">
             <div class="input-group d-flex align-items-center justify-content-center">
-              <a href="https://www.petfinder.com/user/profile/create/?experience=loginAtEnd" class="btn btn-primary personality-test-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Take a personality test to see pet matches by personality type">
-                <i class="fas fa-paw"></i> Take the Personality Test
-              </a>
-            </div>                    
-        </div>
+              <select id="search-type" class="form-input w-45 rounded-1 m-2">                 
+               </select>
+                 <input class="w-45 me-2 rounded-1" type="text" id="zipcode" name="zipcode" placeholder="ZIP code" required>
+                 <div class="input-group-append">
+                 <button type="submit" class="btn btn-primary">
+                 <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            <h1 class="d-flex text-success align-items-center justify-content-center p-3">Find a new friend</h1>
+          </div>
+        </form>
+      </div>
     </div>
+  </main>
+  <div class="video-container">
+    <iframe class="left-video" src="https://www.youtube.com/embed/BodQkadbKNI" frameborder="0" allowfullscreen></iframe>
+    <iframe class="right-video" src="https://www.youtube.com/embed/vK-NW4VKGQk" frameborder="0" allowfullscreen></iframe>
+  </div>  
+ <div class="d-flex col-20 flex-column align-items-center bg-primary-subtle py-5">
+  <div id="hero" class="col-sm-12 col-md-18 col-lg-12 col-xl-9 flex-column align-center bg-light p-9 rounded-4">
+    <div class="form-group p-5">
+      <div class="input-group d-flex align-items-center justify-content-center">
+        <a href="https://www.petfinder.com/user/profile/create/?experience=loginAtEnd" class="btn btn-primary personality-test-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Take a personality test to see pet matches by personality type">
+        <i class="fas fa-paw"></i> Take the Personality Test
+        </a>
+      </div>                    
+    </div>
+  <div>
     <section id="pet-card">
-        <div class="petCard">
-         <a href="https://www.petfinder.com/search/cats-for-adoption/" class="petCard-Link">
-          <i class="fas fa-cat"></i>
-           <span class="petCard-Name">Cat</span>
-          </a>
-         <a href="https://www.petfinder.com/search/cats-for-adoption/" class="petCard-Link">
+      <div class="petCard">
+        <a href="https://www.petfinder.com/search/cats-for-adoption/" class="petCard-Link">
+         <i class="fas fa-cat"></i>
+         <span class="petCard-Name">Cat</span>
+        </a>
+        <a href="https://www.petfinder.com/search/cats-for-adoption/" class="petCard-Link">
           <i class="fas fa-paw"></i>
            <span class="petCard-Name">Other Pets</span>
           </a>
@@ -112,49 +126,47 @@
            <span class="petCard-Name">Donate</span>
           </a>
         </div>
+      </div>
     </section> 
+  </div>
+
 </div>
-  
-
-
-  
 </body>
 <footer>
     <div class="footer-wrapper">
     <div class="footer-links">
-      <a href="/contact-us">Contact Us</a>
-      <a href="/pet-training">Pet Training</a>
-      <a href="/new-center">New Center</a>
-      <a href="/faqs">FAQs</a>
+      <a href="https://www.petfinder.com/contact">Contact Us</a>
+      <a href="https://www.chompsdogtraining.com/service/dog-obedience-training?gclid=CjwKCAjwgqejBhBAEiwAuWHioI_GjuyBIGT345G35KLz-RFpGyZ1F5qXxgiwT7kUWGC2qdTOvJ9fMhoCfX8QAvD_BwE">Pet Training</a>
+      <a href="https://www.dailypaws.com/pet-news-entertainment/adoption-stories">New Center</a>
+      <a href="https://petsmartcharities.org/pro/faqs">FAQs</a>
     </div>
       <div class="newsletter-form">
         <p>To get the latest on pet adoption and pet care, sign up for the newsletter.</p>
-        <form action="https://your-newsletter-signup-endpoint.com" method="post">
-          <input type="email" name="email" placeholder="Enter your email address" required>
+        <form action="https://profiles.petfinder.com/subscription/subscribe/brand/PF?sc=PFOptinFooter201707&_gl=1*149da3u*_ga*MTAyMzQ0MzkxNS4xNjg0MjEyMDk1*_ga_5H1R91DP2Q*MTY4NDcwODMwMi4xMi4wLjE2ODQ3MDgzMDUuMC4wLjA." method="post">
           <input type="submit" value="Sign Up">
         </form>
       </div>
       <div class="footer-links">
-        <a href="https://www.facebook.com/your-facebook-page" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/americanhumane" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-facebook"></i>
         </a>
-        <a href="https://www.instagram.com/your-instagram-page" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/americanhumane/" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://twitter.com/your-twitter-page" target="_blank" rel="noopener noreferrer">
+        <a href="https://twitter.com/americanhumane" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-twitter"></i>
         </a>
         <a href="https://www.example.com/resources" target="_blank" rel="noopener noreferrer">
           <i class="fas fa-book"></i>
         </a>
-        <a href="https://www.example.com/pet-store" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.chewy.com/" target="_blank" rel="noopener noreferrer">
           <i class="fas fa-shopping-cart"></i>
         </a>
       </div>
       <div class="footer-disclaimer">
         <p>&copy; 2023 Your Website. All rights reserved.</p> 
         <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/terms-of-service">Terms of Service</a>
+        <a href="https://www.petfinder.com/terms-of-service">Terms of Service</a>
       </div>
       
     </div>
