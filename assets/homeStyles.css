@@ -1,86 +1,76 @@
 /*home page stylesheet*/
 
-.container {
+.petCard {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-  }
-  .petCard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 5%;
+    position: relative;
+    top:-50vh;
     left: 50%;
     transform: translate(-50%, -215%);
-  }
+}
   
-  .petCard-Link {
+.petCard-Link {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%; 
-    height: auto; 
-    margin-right: 2%; 
+    width: 7.3%;
+    height: auto;
+    margin-right: 2%;
     border: none;
     background-color: transparent;
     cursor: pointer;
-    color: #8333c0;
-    font-size: 5vw; 
+    color: white; 
+    font-size: 5vw;
     text-decoration: none;
     transition: transform 0.9s ease-in-out;
-  }
+    text-shadow: 
+        -1px -1px 0 red,
+        1px -1px 0 red,
+        -1px 1px 0 red, 
+        1px 1px 0 red; 
+}
 
- .left-video {
-  position: absolute;
-  top: 30%;
-  left: 10%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
+.left-video {
+  top: 30.6%;
+  left: .5%;
 }
 
 .right-video {
-  position: absolute;
-  top: 30%;
-  right: 10%;
-  transform: translate(50%, -50%);
-  z-index: 10;
+  top: 30.6%;
+  right: -38%;
+
 }
 
 
-
-  .video-container iframe {
-    width: 30vw;
-    height: 16.1vw;
+.video-container iframe {
+    position: relative;
+    width: 30.5vw;
+    height: 16.0vw;
     border-radius: 20px;
-  }
+    margin-bottom: -7.0%;
+}
   
   
 
 .petCard-Link:hover {
     transform: scale(1.1); 
-    color: #FFA000; 
-  }
+    color: #FFA000;  
+}
 
-  .petCard-Link i {
+.petCard-Link i {
     transition: color 0.3s ease; 
-  }
+}
 
-  .petCard-Link:hover i {
-    color: #FFA000;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  .petCard-Name {
+.petCard-Name {
     margin-top: 10px; 
     font-size: 1rem; 
     text-align: left; 
-  }
+}
   
   
-  #hero {
+#hero {
     background-image: url(secondaryAssests/image/img-1.png);
     background-size: cover;
     background-position: center;
@@ -89,14 +79,13 @@
     height: 500px; 
     width: 100%;
     position: relative;
-  }
+}
 
-  .d-flex.col-30.flex-column.align-items-center.bg-primary-subtle.py-5 {
+.d-flex.col-30.flex-column.align-items-center.bg-primary-subtle.py-5 {
     margin-top: 100px; 
-  }
+}
 
-
-  .personality-test-btn {
+.personality-test-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,39 +99,40 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+}
   
-  .personality-test-btn:hover {
+.personality-test-btn:hover {
     background-color: #FFA000;
     transform: scale(1.1); 
-  }
+}
   
-  .personality-test-btn i {
+.personality-test-btn i {
     margin-right: 5px;
-  }
+}
 
   
-  .footer-wrapper {
+.footer-wrapper {
     background-color: #d892dc;
       padding: 5px; 
-  }
-  .footer-content {
+}
+
+.footer-content {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-  }
+}
   
   
-  .footer-links {
+.footer-links {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
     margin-right: 40px;
-  }
+}
   
-  .footer-links a {
+.footer-links a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -152,51 +142,53 @@
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease, transform 0.3s ease;
-  }
-  .footer-links i:hover {
+}
+
+.footer-links i:hover {
     transform: scale(1.5);
     color: white;
   }
-  .footer-links a:hover {
+
+.footer-links a:hover {
     color: white;
-  }
+}
   
-  .footer-links i {
+.footer-links i {
     font-size: 25px;
     margin-right: 5px;
     color: black;
-  }
+}
   
   
-  .footer-disclaimer {
+.footer-disclaimer {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-top: 10px;
-  }
+}
   
-  .footer-disclaimer p {
+.footer-disclaimer p {
     margin: 0 5px; 
     font-size: 12px; 
     color: #777;
-  }
+}
   
-  .footer-disclaimer a {
+.footer-disclaimer a {
     text-decoration: none;
     margin-right: 10px; 
-  }
+}
   
-  .newsletter-form{
+.newsletter-form{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px; 
-  }
+}
   
 
   
-  .newsletter-form input{
+.newsletter-form input{
     padding: 8px 16px; 
     background-color: #333;
     color: white;
@@ -204,20 +196,22 @@
     border-radius: 4px;
     font-size: 14px; 
     cursor: pointer;
-  }
+}
   
   
-  .newsletter-form input[type="submit"]:hover {
+.newsletter-form input[type="submit"]:hover {
     background-color: #555;
     color: white;
+}
+  .navbar {
+    background-color: royalblue;
   }
-  
 
-  .navbar-nav .dropdown-menu {
+.navbar-nav .dropdown-menu {
     text-align: center;
-  }
+}
   
-  .navbar-nav .dropdown-menu a {
+.navbar-nav .dropdown-menu a {
     display: block;
     padding: 0.5rem 1rem;
     clear: both;
@@ -226,45 +220,53 @@
     color: #212529;
     text-align: center; 
     text-decoration: none;
-  }
+}
   
-  .navbar-nav .dropdown-menu .chewy-link {
+.navbar-nav .dropdown-menu .chewy-link {
     display: flex;
     align-items: center;
     justify-content: center; 
     padding: 0.5rem 1rem;
     color: #212529;
     text-decoration: none;
-  }
+}
   
-  .navbar-nav .dropdown-menu .chewy-link i {
+.navbar-nav .dropdown-menu .chewy-link i {
     margin-right: 0.5rem;
     margin-bottom: 5px;
-  }
+}
   
-  .navbar-brand img {
+.navbar-brand img {
     height: 30px; 
-  }
+}
   
-  .navbar-nav .nav-link {
+.navbar-nav .nav-link {
     padding: 0.5rem 0.75rem; 
     font-size: 14px; 
-  }
+}
   
-  .navbar-nav .dropdown-menu {
+.navbar-nav .dropdown-menu {
     font-size: 14px; 
-  }
+}
   
-  .navbar-nav .dropdown-menu a {
+.navbar-nav .dropdown-menu a {
     padding: 0.25rem 1rem; 
-  }
+}
   
-  .navbar-icon {
+.navbar-icon {
     width: 30px; 
     height: 0vh; 
-  }
+}
   
-  .navbar-icon i {
+.navbar-icon i {
     font-size: 16px; 
-  }
+}
   
+  
+  #zip {
+    background-color: white;
+    color: black; 
+  }
+  .white-icon {
+  color: white;
+}
