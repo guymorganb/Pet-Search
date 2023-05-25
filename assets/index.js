@@ -15,7 +15,7 @@ let breed = null
 function modalAlert() {
     let divEl = $(`
     <div id="dialog" title="Input error" class="ui-widget rounded-1">
-    <p>This dialoge will show you some information, then explode.</p>
+    <p>Input invalid please retry.</p>
     </div>`)
     divEl.insertAfter(navEl)
     $("#dialog").dialog({
@@ -41,6 +41,9 @@ function modalAlert() {
           // showText: true,
         }],
     });
+    $("#dialog").on("dialogclose", function(){
+        $("#dialog").remove()   // remove dialog from DOM
+    })
     $( "#dialog" ).dialog( "open" );
 };
 // sets items in local storage
