@@ -32,21 +32,23 @@
     text-decoration: none;
     transition: transform 0.9s ease-in-out;
   }
-  .left-video {
-    position: fixed;
-    top: 30%;
-    left: 10%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-  }
-  
-  .right-video {
-    position: fixed;
-    top: 30%;
-    right: 10%;
-    transform: translate(50%, -50%);
-    z-index: 10;
-  }
+
+ .left-video {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.right-video {
+  position: absolute;
+  top: 30%;
+  right: 10%;
+  transform: translate(50%, -50%);
+  z-index: 10;
+}
+
 
 
   .video-container iframe {
