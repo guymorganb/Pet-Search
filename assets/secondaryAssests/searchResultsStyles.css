@@ -104,3 +104,7 @@ body{margin-top:20px;
         position: relative;
         text-transform: capitalize;
     }
+    #pets{
+        border: 2px solid black;
+        margin: 20px;
+    }

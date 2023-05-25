@@ -153,7 +153,7 @@ function getDataFromNavDropDown(event){
 // updates the maind drop menu with avaliable anaimals
 function updateDropMenu(adoptionData, type){
     searchBarDropMenu.empty()
-    let firstOption = $(`<option value="" disabled selected>Available ${type} breeds</option>`);
+    let firstOption = $(`<option value="" disabled selected>${type} breeds</option>`);
     searchBarDropMenu.append(firstOption);
 // this was a different way i had to figure out, cause accessing the array
 // directly with a for loop didnt work for some reason
@@ -231,9 +231,6 @@ function handleSearchResults(data){
     if((initVal === 'Cat' || initVal === 'Dog' || initVal === 'Horse' || initVal === 'Bird' || initVal === 'Rabbit') && /^[0-9]{5}$/.test(zip)){
         let go2 = `./petSearchResults.html?type=${initVal}&breed=${breed}&location=${zip}`
         changePage(go2)
-        console.log(initVal)
-        console.log(breed)
-        console.log(zip)
     }
 }
 function init(type){
