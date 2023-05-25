@@ -309,6 +309,7 @@ function parseSearchBar(){
         windowData = windowData.join('=')
         // sets animal object data
         animalDataFromIndex.type = windowData
+        initLoadState =  `animals?${animalDataFromIndex.type}`
     }else if(windowData.length == 4){
         // joins for parsing
         windowData = windowData.join('=')
@@ -322,8 +323,9 @@ function parseSearchBar(){
         animalDataFromIndex.breed = windowData[1]
         // sets user zip object data
         userData.zip = windowData[windowData.length-1]
+        initLoadState = `animals?${animalDataFromIndex.type}&${userData.zip}&distance=100&sort=-distance`
     }
-    initLoadState = `animals?${animalDataFromIndex.type}&${userData.zip}&distance=100&sort=-distance`
+    
 }
 function searchByDistance(){
     $('.distance').click(function(event){
@@ -397,23 +399,24 @@ function generateContent(search){
     getData(search).then(function(data){
         console.log(data)
         for(let i = 0; i <= data.data.animals.length-1; i++){
+            let checkImg = data.data.animals[i].photos && data.data.animals[i].photos.length ? data.data.animals[i].photos[0].medium : "https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000"
             let petContent = ` 
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="our-team my-2">
-                <img src="${data.data.animals[i].photos[0].medium}" alt="${data.data.animals[i].name}">
-                    <div class="team-content">
-                        <h3 class="title">${data.data.animals[i].name}</h3>
-                        <span class="post">${data.data.animals[i].status}/${data.data.animals[i].gender}</span>							
-                        <ul class="social">
-                            <button class="contactInfo fa fa-phone" data-value="${data.data.animals[i].contact.email}/${data.data.animals[i].contact.phone}"></button>
-                            <button class="breedInfo fas fa-info-circle" data-value="${data.data.animals[i].breeds.primary}"></button>
-                            <button class="info fas fa-info-circle" ></button>
-                        </ul>
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="our-team my-2">
+                    <img src="${checkImg}" alt="${data.data.animals[i].name}">
+                        <div class="team-content">
+                            <h3 class="title">${data.data.animals[i].name}</h3>
+                            <span class="post">${data.data.animals[i].status}/${data.data.animals[i].gender}</span>							
+                            <ul class="social">
+                                <button class="contactInfo fa fa-phone" data-value="${data.data.animals[i].contact.email}/${data.data.animals[i].contact.phone}"></button>
+                                <button class="breedInfo fas fa-info-circle" data-value="${data.data.animals[i].breeds.primary}"></button>
+                                <button class="info fas fa-info-circle" ></button>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </div>`
-            contentRow.append(petContent)
-            petContent = contentRow
+                </div>`
+                contentRow.append(petContent)
+                petContent = contentRow
         }
     $(".contactInfo").click(function(event){
         event.stopPropagation()
