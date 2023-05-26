@@ -114,10 +114,10 @@ getData()
 
 
 
-async function getWikipediaApi(breed) {
+async function getWikipediaApi(animal) {
     // encodeURIComponent will ensure the string is properly formated to go into the URL.
-    let encodeBreed = encodeURIComponent(breed)
-    let url = `https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/${encodeBreed}`;
+    let encode = encodeURIComponent(animal)
+    let url = `https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/${encode}`;
     let options = {
         method: 'GET',
         headers: {
@@ -139,8 +139,8 @@ async function getWikipediaApi(breed) {
 
 }
 
-function getBreedInfo(breed){
-    getWikipediaApi(breed).then(function(data){
+function getAnimalInfo(animal){
+    getWikipediaApi(animal).then(function(data){
         console.log(data)
 })} 
 

@@ -7,7 +7,7 @@
 // base call single animal type GET https://api.petfinder.com/v2/types/{type}
 // search by distance and type and sort by distance
 // https://api.petfinder.com/v2/animals?type=dog&location=78582&distance=75&sort=-distance
-// https://api.petfinder.com/v2/animals?type=dog&breed=pug  
+// https://api.petfinder.com/v2/animals?type=dog&breed=pug,samoyed  
 let zipCode = $("#navSearch")
 let appendModal = $('.fa-search')
 let initLoadState = ''
@@ -22,6 +22,8 @@ const userData = {
     distance : "",
     fromTypeButton : "",
     newUrl : "",
+    nextBtnUrl : "",
+    backBtnUrl : "",
 }
 function modalAlert1(input) {
     //$(divEl).empty()
@@ -134,13 +136,11 @@ function modalAlert3(input) {
     $( "#dialog" ).dialog( "open" );
 };
 function modalAlert4(input) {
-    console.log(input)
-   //$(divEl).empty()
     divEl = $(`
     <div id="dialog" title="Breed Info" class="ui-widget rounded-1">
     <h5><strong>${input[0].breed}</strong></h5>
     <p><i>Data & Origin:</i>
-    <a href="https://example.com/image.jpg" title="This is an image of a cat">
+    <a href="#" title="This is an image of a cat">
     <img src="${input[0].img}" alt="${input[0].breed}">
     </a>
     <li>Weight:${input[0].meta.weight}</li>
@@ -362,6 +362,9 @@ function getNewZipCode(){
             userData.zip = `location=${zipCode.val().trim()}`
             console.log(userData.zip)
             updateUrl()
+            userData.newUrl = localStorage.getItem('ApiUrl')
+            console.log(userData.newUrl)
+            generateContent(userData.newUrl)
         }
     }) 
 }
@@ -369,7 +372,7 @@ function updateUrl(){
     if(userData.distance != "" && userData.fromTypeButton != ""){
         // let url0 = `${window.location.href.split('?')[0]}/`
         //let url1 = window.location.href.split('?')[1]
-        let newSearch = `animals?${userData.fromTypeButton}&${userData.zip}&${userData.distance}&sort=+distance`
+        let newSearch = `animals?${userData.fromTypeButton}&${userData.zip}&${userData.distance}&sort=-distance`
         // let newUrl = `${url0}${newSearch}#`
         // updates url without leaving page, the format is adapted to the api so it can be passed
         // history.pushState(null, null, newUrl)
@@ -386,8 +389,8 @@ function makeTheWholePage(search){
     $('#pets').append(firstDiv)
     let secondDiv = $(`
     <div id="container" class="section-title text-center">
-        <h2>Creative team</h2>
-        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        <h2>Pets needing a home</h2>
+        <hr>
     </div>`)
     $(firstDiv).append(secondDiv)
     generateContent(search)
@@ -410,7 +413,6 @@ function generateContent(search){
                             <ul class="social">
                                 <button class="contactInfo fa fa-phone" data-value="${data.data.animals[i].contact.email}/${data.data.animals[i].contact.phone}"></button>
                                 <button class="breedInfo fas fa-info-circle" data-value="${data.data.animals[i].breeds.primary}"></button>
-                                <button class="info fas fa-info-circle" ></button>
                             </ul>
                         </div>
                     </div>
@@ -418,6 +420,9 @@ function generateContent(search){
                 contentRow.append(petContent)
                 petContent = contentRow
         }
+        userData.nextBtnUrl = data.data.pagination._links.next.href
+        userData.backBtnUrl = data.data.pagination._links.previous.href
+        console.log(userData.nextBtnUrl)
     $(".contactInfo").click(function(event){
         event.stopPropagation()
         let info = event.target.dataset.value
@@ -433,6 +438,24 @@ function generateContent(search){
     })
     $(".breedInfo").click(function(event){
         let breedData = event.target.dataset.value
+        if (breedData == 'German Shepherd Dog'){
+            breedData = breedData.replace(/Dog/g, '').trim();
+            callWikiApi(breedData)
+            return;
+        }else if( breedData == 'Chocolate Labrador Retriever'){
+            breedData = breedData.replace(/Chocolate/g, '').trim()
+            callWikiApi(breedData)
+            return;
+        }else if(breedData == 'Anatolian Shepherd' ){
+            breedData = breedData.replace(/Anatolian Shepherd/g,'Kangal Shepherd').trim();
+            callWikiApi(breedData)
+            return;
+        }else if(breedData == 'Mixed Breed' ){
+            let input=[{img:"https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000"}]
+            callWikiApi(input)
+            console.log('mixed breed')
+            return;
+        }
         // let breedData = 'German Shepherd'
         console.log(breedData)
         callWikiApi(breedData)
@@ -444,6 +467,17 @@ function callWikiApi(breed){
         
         modalAlert4(data)
 })} 
+
+function changePage(){
+    $('.nextBtn').click(function(){
+        userData.nextBtnUrl = userData.nextBtnUrl.replace(/\/v2/g,'').trim()
+        makeTheWholePage(userData.nextBtnUrl)
+    })
+    $('.previousBtn').click(function(){
+        userData.backBtnUrl = userData.backBtnUrl.replace(/\/v2/g,'').trim()
+        makeTheWholePage(userData.backBtnUrl)
+    })
+}
 // make a function that grabs the 'next page/previous buttons' and calls makeTheWholePage() and passes it the next page url from the api
 
 function init(){
@@ -454,6 +488,7 @@ function init(){
     getNewZipCode()
     //console.log(userData)
     makeTheWholePage(initLoadState)
+    changePage()
     
 }
 
