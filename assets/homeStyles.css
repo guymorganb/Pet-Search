@@ -1,89 +1,103 @@
-/*home page stylesheet*/
-
-.petCard {
+.parent-container {
+    height: 200px; 
+  }
+  
+  .video-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .left-video,
+  .right-video {
+    width: 30%;
+    height: 200px; 
+    border-radius: 20px;
+  }
+  
+  .left-video {
+    margin-right: 2%;
+  }
+  
+  @media (max-width: 200px) {
+    .left-video,
+    .right-video {
+      width: 30%;
+    }
+  }
+  
+  .petCard {
+    display: flex;
+    justify-content: center; 
     align-items: center;
     position: relative;
-    top:-50vh;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%, -215%);
-}
+    transform: translate(-50%, -170%);
+    width: 100px; 
+  }
   
-.petCard-Link {
+  .petCard-Link {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 7.3%;
+    width: 100%;
     height: auto;
-    margin-right: 2%;
+    margin-right: 20%;
     border: none;
     background-color: transparent;
     cursor: pointer;
-    color: white; 
+    color: white;
     font-size: 5vw;
     text-decoration: none;
     transition: transform 0.9s ease-in-out;
-    text-shadow: 
-        -1px -1px 0 red,
-        1px -1px 0 red,
-        -1px 1px 0 red, 
-        1px 1px 0 red; 
-}
-
-.left-video {
-  top: 30.6%;
-  left: .5%;
-}
-
-.right-video {
-  top: 30.6%;
-  right: -38%;
-
-}
-
-
-.video-container iframe {
-    position: relative;
-    width: 30.5vw;
-    height: 16.0vw;
-    border-radius: 20px;
-    margin-bottom: -7.0%;
+    text-shadow:
+      -1px -1px 0 red,
+      1px -1px 0 red,
+      -1px 1px 0 red,
+      1px 1px 0 red;
+  }
+  
+  @media (max-width: 800px) {
+    .petCard-Link {
+      font-size: 2vw; 
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .petCard-Link {
+      font-size: .06vw; 
+    }
 }
   
+  .petCard-Link:hover {
+    transform: scale(1.1);
+    color: #FFA000;
+  }
   
-
-.petCard-Link:hover {
-    transform: scale(1.1); 
-    color: #FFA000;  
-}
-
-.petCard-Link i {
-    transition: color 0.3s ease; 
-}
-
-.petCard-Name {
-    margin-top: 10px; 
-    font-size: 1rem; 
-    text-align: left; 
-}
+  .petCard-Link i {
+    transition: color 0.3s ease;
+  }
   
+  .petCard-Name {
+    font-size: 1rem;
+    text-align: left;
+  }
   
-#hero {
+  #hero {
     background-image: url(secondaryAssests/image/img-1.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin-bottom: auto;
-    height: 500px; 
+    height: 500px;
     width: 100%;
     position: relative;
-}
+  }
 
-.d-flex.col-30.flex-column.align-items-center.bg-primary-subtle.py-5 {
-    margin-top: 100px; 
-}
+  
 
 .personality-test-btn {
     display: flex;
