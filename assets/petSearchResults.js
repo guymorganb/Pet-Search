@@ -400,7 +400,6 @@ function generateContent(search){
     let contentRow = $('<div class="row"></div>')
     contentRow.insertAfter($('#container'))
     getData(search).then(function(data){
-        console.log(data)
         for(let i = 0; i <= data.data.animals.length-1; i++){
             let checkImg = data.data.animals[i].photos && data.data.animals[i].photos.length ? data.data.animals[i].photos[0].medium : "https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000"
             let petContent = ` 
@@ -420,9 +419,8 @@ function generateContent(search){
                 contentRow.append(petContent)
                 petContent = contentRow
         }
-        userData.nextBtnUrl = data.data.pagination._links.next.href
-        userData.backBtnUrl = data.data.pagination._links.previous.href
-        console.log(userData.nextBtnUrl)
+        userData.nextBtnUrl = data.data.pagination._links.next && data.data.pagination._links.next.href ? data.data.pagination._links.next.href : ""
+        userData.backBtnUrl = data.data.pagination._links.previous && data.data.pagination._links.previous.href ? data.data.pagination._links.previous.href : ""
     $(".contactInfo").click(function(event){
         event.stopPropagation()
         let info = event.target.dataset.value
@@ -470,12 +468,16 @@ function callWikiApi(breed){
 
 function changePage(){
     $('.nextBtn').click(function(){
+        if(userData.nextBtnUrl != null){
         userData.nextBtnUrl = userData.nextBtnUrl.replace(/\/v2/g,'').trim()
         makeTheWholePage(userData.nextBtnUrl)
+        }
     })
     $('.previousBtn').click(function(){
+        if(userData.nextBtnUrl != null){
         userData.backBtnUrl = userData.backBtnUrl.replace(/\/v2/g,'').trim()
         makeTheWholePage(userData.backBtnUrl)
+        }
     })
 }
 // make a function that grabs the 'next page/previous buttons' and calls makeTheWholePage() and passes it the next page url from the api
