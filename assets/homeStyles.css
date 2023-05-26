@@ -84,7 +84,6 @@
   }
 
  .left-video {
-  position: r;
   top: 30%;
   left: 10%;
   transform: translate(-50%, -50%);
@@ -92,7 +91,6 @@
 }
 
 .right-video {
-  position: relative;
   top: 30%;
   right: 10%;
   transform: translate(50%, -50%);
