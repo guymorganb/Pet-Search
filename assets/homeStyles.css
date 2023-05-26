@@ -1,33 +1,33 @@
 .parent-container {
     height: 200px; 
-  }
+}
   
-  .video-container {
+.video-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-  }
+}
   
-  .left-video,
-  .right-video {
+.left-video,
+.right-video {
     width: 30%;
     height: 200px; 
     border-radius: 20px;
-  }
+}
   
-  .left-video {
+.left-video {
     margin-right: 2%;
-  }
+}
   
-  @media (max-width: 200px) {
+@media (max-width: 200px) {
     .left-video,
     .right-video {
       width: 30%;
     }
-  }
+}
   
-  .petCard {
+.petCard {
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -36,9 +36,9 @@
     left: 50%;
     transform: translate(-50%, -170%);
     width: 100px; 
-  }
+}
   
-  .petCard-Link {
+.petCard-Link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,35 +58,35 @@
       1px -1px 0 red,
       -1px 1px 0 red,
       1px 1px 0 red;
-  }
+}
   
-  @media (max-width: 800px) {
+@media (max-width: 800px) {
     .petCard-Link {
       font-size: 2vw; 
     }
-  }
+}
   
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
     .petCard-Link {
       font-size: .06vw; 
     }
 }
   
-  .petCard-Link:hover {
+.petCard-Link:hover {
     transform: scale(1.1);
     color: #FFA000;
-  }
+}
   
-  .petCard-Link i {
+.petCard-Link i {
     transition: color 0.3s ease;
   }
   
-  .petCard-Name {
+.petCard-Name {
     font-size: 1rem;
     text-align: left;
-  }
+}
   
-  #hero {
+#hero {
     background-image: url(secondaryAssests/image/img-1.png);
     background-size: cover;
     background-position: center;
@@ -95,7 +95,7 @@
     height: 500px;
     width: 100%;
     position: relative;
-  }
+}
 
   
 
