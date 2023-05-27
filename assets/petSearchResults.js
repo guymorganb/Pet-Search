@@ -401,7 +401,7 @@ function generateContent(search){
     contentRow.insertAfter($('#container'))
     getData(search).then(function(data){
         for(let i = 0; i <= data.data.animals.length-1; i++){
-            let checkImg = data.data.animals[i].photos && data.data.animals[i].photos.length ? data.data.animals[i].photos[0].medium : "https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000"
+            let checkImg = data.data.animals[i].photos && data.data.animals[i].photos.length ? data.data.animals[i].photos[0].medium : "assets/secondaryAssests/image/ime-5.jpeg"
             let petContent = ` 
                 <div class="col-lg-3 col-sm-6 col-xs-12">
                     <div class="our-team my-2">
@@ -495,3 +495,4 @@ function init(){
 }
 
 document.addEventListener('DOMContentLoaded', init())
+
