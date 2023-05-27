@@ -1,21 +1,6 @@
-<<<<<<< HEAD
 .parent-container {
     height: 200px; 
 }
-=======
-/*home page stylesheet*/
-
-
-  .petCard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translate(-50%, -215%);
-  }
->>>>>>> f68f8ce (new)
   
 .video-container {
     display: flex;
@@ -68,7 +53,6 @@
     font-size: 5vw;
     text-decoration: none;
     transition: transform 0.9s ease-in-out;
-<<<<<<< HEAD
     text-shadow:
       -1px -1px 0 red,
       1px -1px 0 red,
@@ -80,22 +64,6 @@
     .petCard-Link {
       font-size: 2vw; 
     }
-=======
-  }
-
- .left-video {
-  top: 30%;
-  left: 10%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
-.right-video {
-  top: 30%;
-  right: 10%;
-  transform: translate(50%, -50%);
-  z-index: 10;
->>>>>>> f68f8ce (new)
 }
   
 @media (max-width: 600px) {
