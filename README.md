@@ -9,6 +9,8 @@
 
 - This project solves the problem of needing to demonstrate the ability to use JavaScript to dynamically use and manage multiple API resources, the page dynamically use 3rd party API data and presents that information usefully where the user can access it. Bootstrap, as a CSS framework, which our instructor told us we were allowed to use despite the Rubric saying not to use Bootstrap, jQuery for scripting, Font-Awesome for icons, and Bootstrap Javascript/CSS CDN's. These combined make the page dynamically responsive.
 
+- Please note: This application uses persistant data in local storage to store a few items inclding a timestamp for when the API key needs to be refreshed, the API key itself and the modified URL which is used for the search bar. 
+
 - We were able to expand our knowleged of JavaScript with managing multiple API calls, grow while working with a team, learn how to apply my skills to the needs of the user, offer a solution to a problem. My knowledge and understanding of the level of detail that goes into an MVP this simple was greatly expanded.
 
 - Ideas for further development include implementing personality testing functionality using a third API for a personality test, such as Myers-Briggs, or others such as the Enneagram. This would help users match to a pet by their personality and other traits of the pet which are pulled from the other 2 API's. For now the personality test links to a third party personality type test for functionality.
