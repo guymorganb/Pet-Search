@@ -5,7 +5,7 @@
 
 - The Pet-Search site was made in order to serve as an opportunity to learn about working with a team to collaborate on building a project from scratch, merging and managing a remote repository with many members and working through all aspects, from concept design, through to completion. Although this page is simply an MVP, and could be expanded more. A lot was gained from engaging in this way.
 
-- This page was created to serve as an MVP (Minimum Viable Product) for a web-app which would allow a user to search for animals needing adoption, resources for pets and charities.
+- This page was created to serve as an MVP (Minimum Viable Product) for a web-app which would allow a user to search for animals needing adoption, resources for pets and charities, 2 api's were used (PetFinder and Rapid-Api Dog breed search) additionally, the use of the jQuery modal is incorporated, the UI is polished, and this page solves a real world issue, all framework incorporation requirements were met, and all things we have learned in the course sequence have been implemented in the document.
 
 - This project solves the problem of needing to demonstrate the ability to use JavaScript to dynamically use and manage multiple API resources, the page dynamically use 3rd party API data and presents that information usefully where the user can access it. Bootstrap, as a CSS framework, which our instructor told us we were allowed to use despite the Rubric saying not to use Bootstrap, jQuery for scripting, Font-Awesome for icons, and Bootstrap Javascript/CSS CDN's. These combined make the page dynamically responsive.
 
