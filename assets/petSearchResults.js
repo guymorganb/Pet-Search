@@ -421,7 +421,7 @@ function generateContent(search){
             callWikiApi(input);
             return;
         };
-        callWikiApi(breedData);
+        //callWikiApi(breedData);
     });
     });
 };
