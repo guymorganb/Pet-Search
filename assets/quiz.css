@@ -38,7 +38,7 @@ body {
 }
 
 .hero_container h1 {
-  color: #fff; /* Placeholder text color */
+  color: #8b8a8a; /* Placeholder text color */
   margin-top: 80px; /* Adjust the margin-top as needed */
 }
 
@@ -81,8 +81,8 @@ body {
 
 .question_container h1 {
   margin-bottom: 30px;
-  color: aliceblue;
-  
+  color: rgb(187, 187, 187);
+  width: 75%;
 }
 
 .question_container h2 {
@@ -98,16 +98,28 @@ body {
   border: 2px solid #00FFFF; /* Neon blue outline color */
   padding: 5px;
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: #00FFFF;
+  background-color: rgba(128, 128, 128, 0.3); /* Faded grey background color */
+  font-family: monospace;
+  font-weight: bolder;
 }
 
-#submitButton {
-  background-color: #4CAF50; /* Set the background color */
-  color: white; /* Set the text color */
-  border: none; /* Remove the button border */
-  padding: 10px 20px; /* Set the padding */
-  border-radius: 20px; /* Make the button rounded */
-  cursor: pointer; /* Add a cursor on hover */
+#submitButton{
+  background: linear-gradient(to bottom, #8E24AA, #6A1B9A);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#submitButton:hover {
+  opacity: 0.9;
+  border: 2px solid #DA70D6;
+  box-shadow: 0 0 5px #DA70D6;
 }
 
 
@@ -393,9 +405,9 @@ animation-delay: -0.4s;
   min-height: 100vh;
 }
 .container {
-  position: fixed;
-  top: 30%;
-  left: 30%;
+  position: relative;
+  top: -12rem;
+  left: 0;
   padding: 30px;
   background: #f2f2f2;
   border-radius: 4px;
@@ -544,4 +556,133 @@ animation-delay: -0.4s;
 
 /* End of Circle Settings */
 
+/* Absolute Center Spinner */
+.loading {
+  position: relative;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: visible;
+  margin: auto;
+  top: +15rem;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
 
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Set background color to transparent */
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(186, 85, 211, 0.75) 1.5em 0 0 0, rgba(178, 83, 211, 0.75) 1.1em 1.1em 0 0, rgba(170, 81, 211, 0.75) 0 1.5em 0 0, rgba(161, 78, 211, 0.75) -1.1em 1.1em 0 0, rgba(152, 76, 211, 0.5) -1.5em 0 0 0, rgba(144, 74, 211, 0.5) -1.1em -1.1em 0 0, rgba(135, 71, 211, 0.75) 0 -1.5em 0 0, rgba(127, 69, 211, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(186, 85, 211, 0.75) 1.5em 0 0 0, rgba(178, 83, 211, 0.75) 1.1em 1.1em 0 0, rgba(170, 81, 211, 0.75) 0 1.5em 0 0, rgba(161, 78, 211, 0.75) -1.1em 1.1em 0 0, rgba(152, 76, 211, 0.75) -1.5em 0 0 0, rgba(144, 74, 211, 0.75) -1.1em -1.1em 0 0, rgba(135, 71, 211, 0.75) 0 -1.5em 0 0, rgba(127, 69, 211, 0.75) 1.1em -1.1em 0 0;
+  }
+
+/* Animation */
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+#response {
+  text-align: center;
+  width: 75%;
+  margin: 0 auto;
+  font-family: monospace;
+  font-weight: bolder;
+  color: #8b8a8a;
+}
+
+
+/* return button stlyings */
