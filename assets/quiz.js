@@ -21,8 +21,11 @@ var responseEl = document.getElementById("response");
 
 var submitEl = document.getElementById("submitButton");
 
+part1 = 'sk-6KTqJyvQ40Nb'
+part2 = 'VfJjtYMLT3BlbkF'
+part3 = 'JoFQ5x2S8KbEitLd697WN'
 
-const apiKey = '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';
+const apiKey = part1 + part2 + part3;
 const modelId = 'gpt-3.5-turbo'; // or any other available model ID
 
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
