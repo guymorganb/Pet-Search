@@ -94,6 +94,14 @@ function HandleAnswers(event) {
   var answer5 = answer5El.value;
   var answer6 = answer6El.value;
 
+  const pageHeight = window.innerHeight;
+
+  // Scroll the page down by one page height
+  window.scrollBy({
+    top: pageHeight,
+    behavior: 'smooth'
+  });
+
   console.log(`Here are the user responses: ${answer1},${answer2},${answer3},${answer4},${answer5},${answer6}`);
 
   const userData = {
@@ -117,7 +125,9 @@ function HandleAnswers(event) {
   })
     .then(response => response.json())
     .then(result => {
-      // Handle the API response here
+
+
+            // Handle the API response here
       console.log(result.choices[0].message.content);
       GPT_Advice = result.choices[0].message.content;
       responseEl.innerText = GPT_Advice;
@@ -434,23 +444,4 @@ scrollElement5.addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
-
-
-//Makes the cat a clickable link home once it reaches the bottom
-
-window.addEventListener('scroll', function() {
-  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-  var scrollHeight = document.documentElement.scrollHeight;
-  var windowHeight = window.innerHeight;
-
-  if (scrollPosition >= (scrollHeight - windowHeight) && scrollPosition > 0) {
-    setTimeout(function() {
-      var catLink = document.getElementById('catLink');
-      catLink.href = 'https://example.com'; // Replace with your desired link
-      catLink.classList.add('show');
-    }, 8000); // Show the link after 8 seconds
-  }
-});
-
-
 
