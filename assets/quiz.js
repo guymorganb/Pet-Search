@@ -24,6 +24,8 @@ console.log(loadingEl)
 
 var submitEl = document.getElementById("submitButton");
 
+var catWordBox = document.querySelector('.announcement-box');
+
 part1 = 'sk-6KTqJyvQ40Nb'
 part2 = 'VfJjtYMLT3BlbkF'
 part3 = 'JoFQ5x2S8KbEitLd697WN'
@@ -39,6 +41,20 @@ const data = {
     { role: 'system', content: `Can you ask me 6 short questions to help me determine what breed of cat is right for me based on my personality and lifestyle?` },
   ],
 };
+
+
+// This function will scroll the page to the top
+function scrollToTop() {
+  setTimeout(function() {
+    window.scrollTo(0, 0);
+  }, 100);
+}
+
+window.addEventListener('load', scrollToTop);
+
+// This event listener will trigger the function when the page finishes loading
+window.addEventListener('load', scrollToTop);
+
 
 
 function QuestionGenerator(){
@@ -106,6 +122,7 @@ function HandleAnswers(event) {
       GPT_Advice = result.choices[0].message.content;
       responseEl.innerText = GPT_Advice;
       loadingEl.style.display = 'none'
+      catWordBox.style.display = 'flex'
     })
     .catch(error => {
       // Handle any errors
@@ -434,5 +451,6 @@ window.addEventListener('scroll', function() {
     }, 8000); // Show the link after 8 seconds
   }
 });
+
 
 
