@@ -18,6 +18,9 @@ var Questions = '';
 var GPT_Advice = '';
 
 var responseEl = document.getElementById("response");
+var loadingEl = document.getElementsByClassName('loading')[0];
+
+console.log(loadingEl)
 
 var submitEl = document.getElementById("submitButton");
 
@@ -102,6 +105,7 @@ function HandleAnswers(event) {
       console.log(result.choices[0].message.content);
       GPT_Advice = result.choices[0].message.content;
       responseEl.innerText = GPT_Advice;
+      loadingEl.style.display = 'none'
     })
     .catch(error => {
       // Handle any errors
@@ -415,5 +419,20 @@ scrollElement5.addEventListener('click', () => {
 });
 
 
+//Makes the cat a clickable link home once it reaches the bottom
+
+window.addEventListener('scroll', function() {
+  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  var scrollHeight = document.documentElement.scrollHeight;
+  var windowHeight = window.innerHeight;
+
+  if (scrollPosition >= (scrollHeight - windowHeight) && scrollPosition > 0) {
+    setTimeout(function() {
+      var catLink = document.getElementById('catLink');
+      catLink.href = 'https://example.com'; // Replace with your desired link
+      catLink.classList.add('show');
+    }, 8000); // Show the link after 8 seconds
+  }
+});
 
 
