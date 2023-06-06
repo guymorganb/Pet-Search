@@ -1,6 +1,35 @@
 .parent-container {
-    height: 200px; 
-}
+    height: 200px;
+    position: relative; /* Add position: relative to create a positioning context */
+  }
+  
+  .header-title {
+    text-align: center;
+    font-size: 4vw;
+    font-weight: bold;
+    color: #333333;
+    padding: 20px;
+    margin-top: -150px;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+    max-height: 200px;
+  }
+  
+  .header-subtitle {
+    text-align: center;
+    font-size: 2vw;
+    color: #666666;
+    margin-top: 10px;
+    position: absolute; /* Add position: absolute for precise positioning */
+    top: 80%; /* Adjust the top value to position it vertically */
+    left: 50%; /* Adjust the left value to position it horizontally */
+    transform: translate(-50%, -50%); /* Center the subtitle using translate */
+  }
+  
+  
+  /* Rest of the CSS code remains the same */
+  
+
   
 .video-container {
     display: flex;
@@ -27,64 +56,6 @@
     }
 }
   
-.petCard {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    position: relative;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -170%);
-    width: 100px; 
-}
-  
-.petCard-Link {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    margin-right: 20%;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    color: white;
-    font-size: 5vw;
-    text-decoration: none;
-    transition: transform 0.9s ease-in-out;
-    text-shadow:
-      -1px -1px 0 red,
-      1px -1px 0 red,
-      -1px 1px 0 red,
-      1px 1px 0 red;
-}
-  
-@media (max-width: 800px) {
-    .petCard-Link {
-      font-size: 2vw; 
-    }
-}
-  
-@media (max-width: 600px) {
-    .petCard-Link {
-      font-size: .06vw; 
-    }
-}
-  
-.petCard-Link:hover {
-    transform: scale(1.1);
-    color: #FFA000;
-}
-  
-.petCard-Link i {
-    transition: color 0.3s ease;
-  }
-  
-.petCard-Name {
-    font-size: 1rem;
-    text-align: left;
-}
   
 #hero {
     background-image: url(secondaryAssests/image/img-1.png);
