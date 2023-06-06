@@ -427,8 +427,16 @@ function generateContent(search){
 };
 function callWikiApi(breed){
     getWikipediaApi(breed).then(function(data){
+<<<<<<< HEAD
         modalAlert4(data);
 })};
+=======
+        
+        modalAlert4(data)
+})} 
+
+
+>>>>>>> 7bde5c9 (cleaned up landing page)
 // function that grabs the 'next page/previous buttons' and calls makeTheWholePage() and passes it the next page url from the api
 function changePage(){
     $('.nextBtn').click(function(){
@@ -452,6 +460,10 @@ function init(){
     makeTheWholePage(initLoadState);
     changePage();
 };
+<<<<<<< HEAD
 
 document.addEventListener('DOMContentLoaded', init());
+=======
+>>>>>>> 7bde5c9 (cleaned up landing page)
 
+document.addEventListener('DOMContentLoaded', init());

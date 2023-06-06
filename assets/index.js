@@ -248,4 +248,5 @@ function init(type){
     returnAvaliableBreeds()    
 }
 
+
  document.addEventListener('DOMContentLoaded', init(initVal))
